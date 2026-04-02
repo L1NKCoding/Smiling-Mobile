@@ -85,6 +85,13 @@ namespace rayzngames
 
 		[Header("Speed M/s")]
 		public float currentSpeed { get; private set; }
+
+		[Header("Jump Settings")]
+		public float jumpForce = 350f;     // Upward force
+		public float jumpCooldown = 0.25f; // Prevents spam jumping
+		private bool canJump = true;
+		public bool jumpInput { get; set; } // Set this from your input script
+
 		protected private WheelHit frontInfo;
 		protected private WheelHit rearInfo;
 		
@@ -123,7 +130,11 @@ namespace rayzngames
 				HandleSteering();
 				LeanOnTurnLocal();
 				UpdateHandles();
+
+				// ADD THIS ↓↓↓
+				HandleJump();
 			}
+
 			UpdateWheels();
 			EmitTrail();
 			Speed_O_Meter();			
@@ -160,6 +171,25 @@ namespace rayzngames
 			float force = braking ? brakeForce : 0f;
 			ApplyBraking(force);
 		}
+
+		private void HandleJump()
+		{
+			if (!canJump) return;
+
+			if (jumpInput && OnGround())
+			{
+				rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+				StartCoroutine(JumpReset());
+			}
+		}
+
+		private System.Collections.IEnumerator JumpReset()
+		{
+			canJump = false;
+			yield return new WaitForSeconds(jumpCooldown);
+			canJump = true;
+		}
+
 		private void ApplyBraking(float brakeForce)
 		{
 			frontWheel.brakeTorque = brakeForce * frontBrakePower;

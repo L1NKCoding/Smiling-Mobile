@@ -20,6 +20,8 @@ namespace rayzngames
             bicycle.horizontalInput = Input.GetAxis("Horizontal");
             BrakingInput();
 
+            bicycle.jumpInput = Input.GetKeyDown(KeyCode.Space);
+
             //Extending functionality 
             bicycle.InControl(controllingBike);
 
@@ -44,11 +46,11 @@ namespace rayzngames
         }
         void BrakingInput()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 bicycle.braking = true;
             }
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 bicycle.braking = false;
             }
