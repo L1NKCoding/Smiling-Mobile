@@ -2,19 +2,13 @@ using UnityEngine;
 
 public class ZoneActivate : MonoBehaviour
 {
-  public GameObject panelToShow;  // Assign UI Panel in Inspector
+  public GameObject winScreen; // Assign in Inspector
 
-    private void Start()
+    private void OnTriggerEnter(Collider collision)
     {
-        if (panelToShow != null)
-            panelToShow.SetActive(false);  // Panel starts hidden
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            panelToShow.SetActive(true);
+            winScreen.SetActive(true);
         }
     }
 }
