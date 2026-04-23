@@ -5,6 +5,11 @@ namespace rayzngames
 	public class CameraController : MonoBehaviour
 	{
 		public Transform target;
+
+		public void SetTarget(Transform newTarget)
+		{
+			target = newTarget;
+		}
 		[Space(10)]
 		public float sensitivity;
 
