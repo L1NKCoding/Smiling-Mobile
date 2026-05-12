@@ -1,48 +1,59 @@
-Title: Smiling Mobile
+# Smiling Mobile
 
-Genre: Driving / Obstacle Platformer (3D)
+Smiling Mobile is a 3D physics-based bike platformer inspired by chaotic stunt games. The goal is simple: ride from start to finish through hazard-filled levels without wiping out.
 
-Core Idea: Smiling Mobile is a 3D physics-based driving game inspired by games like Happy Wheels. The player controls a character riding a bike and must travel from point A to point B across dangerous, obstacle-filled levels. The gameplay emphasizes balance, timing, and physics interactions, often leading to chaotic and humorous outcomes when the player fails.
+## Genre
 
---- Core Mechanics ---
+Driving / Obstacle Platformer (3D)
 
-Player Movement:
-- Drive forward and backward
-- Jump
-- Brake
+## Core Gameplay Loop
 
-Physics Interaction: The bike reacts to terrain, slopes, and collisions using Unity physics
+1. Accelerate through ramps, gaps, and hazards.
+2. Keep balance using precise steering and braking.
+3. Recover from rough landings and avoid crashing.
+4. Reach the goal to complete the level.
 
-Obstacle System
-- Hazards such as spikes, gaps, and moving objects
-- Collisions with hazards can result in failure
+## Features
 
-Item Collection:
-- Collectible items such as coins placed throughout levels
-- Collecting certain items increases the player’s score
+- Physics-driven bicycle movement and collision response
+- Obstacle-heavy level design (spikes, drops, moving hazards)
+- Crash and ragdoll behavior for high-impact failures
+- Respawn system for fast retries
+- Collectible pickups that can contribute to score
 
---- Win and Lose Conditions ---
-Win Condition: The player reaches the end of the level (goal)
+## Controls (Current Build)
 
-Lose Conditions:
-- The player collides with hazards (spikes or traps)
-- The player falls off the map
+- `W/S` or `Up/Down`: accelerate / reverse
+- `A/D` or `Left/Right`: tilt and steer
+- `Space`: jump
+- `Left Shift`: brake
+- `G`: force ragdoll (debug/manual crash)
+- `R`: respawn after a crash
 
---- UI Plan ---
-Title Screen:
-- Game title (“Smiling Mobile”)
-- Start button
-- Settings
+## Win and Lose Conditions
 
-Gameplay UI:
-- Score (based on collected items)
-- Potentially a Timer?
+### Win
 
-End Screens:
-- Win screen displaying completion message and score
-- Game over screen with restart option
+- Reach the level goal.
 
---- Tools and Assets ---
-Unity Game Engine (3D)
-Easy Bike System (RayznGames asset)
-Custom-designed levels and obstacles
+### Lose
+
+- Hit major hazards (for example spikes/traps).
+- Fall off the course.
+- Crash from extreme tilt or hard impact.
+
+## UI Direction
+
+- Title screen with Start and Settings
+- In-game HUD for score and optional timer
+- End screens for level clear and game over states
+
+## Tech Stack
+
+- Unity (3D)
+- RayznGames Bicycle System
+- Custom level geometry, hazards, and gameplay scripting
+
+## Project Status
+
+This project is currently in active development for Intro to Game Development (Spring 2026).
