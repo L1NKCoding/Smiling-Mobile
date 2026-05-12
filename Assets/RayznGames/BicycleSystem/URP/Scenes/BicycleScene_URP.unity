@@ -1593,6 +1593,10 @@ PrefabInstance:
       propertyPath: ragdollController
       value: 
       objectReference: {fileID: 934179764}
+    - target: {fileID: 413102697978717325, guid: 9162c99b7ddbc05ac9244aa7511276f8, type: 3}
+      propertyPath: crashAngleDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 500415198060874540, guid: 9162c99b7ddbc05ac9244aa7511276f8, type: 3}
       propertyPath: m_Layer
       value: 6
