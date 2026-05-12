@@ -10,7 +10,8 @@ public class RagdollController : MonoBehaviour
 
     [Header("Ragdoll Control")]
     [SerializeField] float hipTorque = 200f;
-    [SerializeField] float thrustForce = 120f;
+    [SerializeField] float thrustForce = 30f;
+    [SerializeField] float spaceBoostMultiplier = 1f;
 
     private Rigidbody hipRigidbody;
     private bool isRagdoll = false;
@@ -58,9 +59,9 @@ public class RagdollController : MonoBehaviour
         hipRigidbody.AddTorque(transform.right  *  v * hipTorque);
         hipRigidbody.AddTorque(transform.forward * -h * hipTorque);
 
-        // Thrust upward
-        if (Input.GetKey(KeyCode.Space))
-            hipRigidbody.AddForce(Vector3.up * thrustForce);
+        // Brief jump impulse (fires once per key press)
+        if (Input.GetKeyDown(KeyCode.Space))
+            hipRigidbody.AddForce(Vector3.up * thrustForce * spaceBoostMultiplier, ForceMode.Impulse);
     }
 
     public void SetRagdollState(bool enableRagdoll)
