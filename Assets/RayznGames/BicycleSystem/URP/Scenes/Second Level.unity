@@ -1201,7 +1201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7bf07f04b7177f4c9625d63defe6796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictoryZone
-  victoryPanel: {fileID: 0}
+  victoryPanel: {fileID: 1778048067}
 --- !u!65 &488888662
 BoxCollider:
   m_ObjectHideFlags: 0
