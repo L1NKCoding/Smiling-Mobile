@@ -21,7 +21,7 @@ public class MainMenuController : MonoBehaviour
 
     public void PlayLevelTwo()
     {
-        SceneManager.LoadScene("BicycleScene_URP");
+        SceneManager.LoadScene("Second Level");
     }
 
     public void OpenSettings()
