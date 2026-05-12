@@ -1354,7 +1354,7 @@ PrefabInstance:
     - target: {fileID: 5093928887093269044, guid: 599e200f82636be4c8b09ae16dee76f0, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1118018991}
     - target: {fileID: 6454986469752722634, guid: 599e200f82636be4c8b09ae16dee76f0, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -3379,6 +3379,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 685628390}
   m_SourcePrefab: {fileID: 100100000, guid: 9162c99b7ddbc05ac9244aa7511276f8, type: 3}
+--- !u!4 &1118018991 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2746049019971407452, guid: 9162c99b7ddbc05ac9244aa7511276f8, type: 3}
+  m_PrefabInstance: {fileID: 1118018990}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1244391834 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5138600217668982468, guid: 9162c99b7ddbc05ac9244aa7511276f8, type: 3}
@@ -4914,6 +4919,7 @@ MeshCollider:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 495933888}
   - {fileID: 1118018990}
   - {fileID: 78363432}
   - {fileID: 624604038}
@@ -4921,4 +4927,3 @@ SceneRoots:
   - {fileID: 488888665}
   - {fileID: 1977317871}
   - {fileID: 41643384}
-  - {fileID: 495933888}
