@@ -134,6 +134,10 @@ namespace rayzngames
 				// ADD THIS ↓↓↓
 				HandleJump();
 			}
+			else
+			{
+				ApplyOutOfControlCoast();
+			}
 
 			UpdateWheels();
 			EmitTrail();
@@ -194,6 +198,48 @@ namespace rayzngames
 		{
 			frontWheel.brakeTorque = brakeForce * frontBrakePower;
 			rearWheel.brakeTorque = brakeForce * rearBrakePower;
+		}
+
+		private void ApplyOutOfControl(float brakeTorque)
+		{
+			rearWheel.motorTorque = 0f;
+			ApplyBraking(brakeTorque);
+			frontWheel.steerAngle = 0f;
+		}
+
+		private void ApplyOutOfControlCoast()
+		{
+			ApplyOutOfControl(0f);
+		}
+
+		private void ApplyOutOfControlHardBrake()
+		{
+			ApplyOutOfControl(brakeForce);
+		}
+
+		public void StopDriveKeepMomentum()
+		{
+			verticalInput = 0f;
+			horizontalInput = 0f;
+			jumpInput = false;
+			braking = false;
+			ApplyOutOfControlCoast();
+		}
+
+		public void StopImmediately(bool clearVelocity = true)
+		{
+			verticalInput = 0f;
+			horizontalInput = 0f;
+			jumpInput = false;
+			braking = true;
+			ApplyOutOfControlHardBrake();
+
+			if (clearVelocity)
+			{
+				rb.linearVelocity = Vector3.zero;
+				rb.angularVelocity = Vector3.zero;
+				rb.Sleep();
+			}
 		}
 
 		//This replaces the (Magic numbers) that controlled an exponential decay function for maxteeringAngle (maxSteering angle was not adjustable)

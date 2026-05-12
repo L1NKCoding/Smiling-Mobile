@@ -26,6 +26,7 @@ namespace rayzngames
         private bool hasCrashed = false;
         private float airborneTimer = 0f;
         private float crashAngleTimer = 0f;
+        private Rigidbody bikeRb;
 
         private Vector3 spawnPosition;
         private Quaternion spawnRotation;
@@ -36,6 +37,7 @@ namespace rayzngames
         void Awake()
         {
             bicycle = GetComponent<BicycleVehicle>();
+            bikeRb = GetComponent<Rigidbody>();
 
             spawnPosition = transform.position;
             spawnRotation = transform.rotation;
@@ -109,6 +111,7 @@ namespace rayzngames
             controllingBike = false;
             bicycle.InControl(false);
             bicycle.ConstrainRotation(false);
+            bicycle.StopDriveKeepMomentum();
 
             if (bikeIKTargets != null)
                 bikeIKTargets.enabled = false;
@@ -128,12 +131,8 @@ namespace rayzngames
             // Reset bike transform and velocity
             transform.position = spawnPosition;
             transform.rotation = spawnRotation;
-            Rigidbody bikeRb = GetComponent<Rigidbody>();
-            if (bikeRb != null)
-            {
-                bikeRb.linearVelocity = Vector3.zero;
-                bikeRb.angularVelocity = Vector3.zero;
-            }
+            bicycle.StopImmediately(true);
+            StartCoroutine(ClearRespawnMomentumNextFixedStep());
 
             // Restore ragdoll to animated state and re-attach to bike
             if (ragdollController != null)
@@ -154,6 +153,22 @@ namespace rayzngames
             controllingBike = true;
             airborneTimer = 0f;
             crashAngleTimer = 0f;
+        }
+
+        private void ZeroBikeMotion()
+        {
+            if (bikeRb == null) return;
+
+            bikeRb.linearVelocity = Vector3.zero;
+            bikeRb.angularVelocity = Vector3.zero;
+            bikeRb.Sleep();
+        }
+
+        private System.Collections.IEnumerator ClearRespawnMomentumNextFixedStep()
+        {
+            yield return new WaitForFixedUpdate();
+            ZeroBikeMotion();
+            bicycle.braking = false;
         }
 
         void OnCollisionEnter(Collision collision)
