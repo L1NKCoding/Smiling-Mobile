@@ -14,6 +14,16 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("BicycleScene_URP");
     }
 
+    public void PlayLevelOne()
+    {
+        SceneManager.LoadScene("First Level");
+    }
+
+    public void PlayLevelTwo()
+    {
+        SceneManager.LoadScene("BicycleScene_URP");
+    }
+
     public void OpenSettings()
     {
         SceneManager.LoadScene("Settings");
